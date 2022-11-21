@@ -32,6 +32,14 @@ window.onload = function(){
         .defer(d3.json, "data/FranceRegions.topojson") //load choropleth spatial data
         .await(callback);
 	
+	
+	//Example 2.3 line 1
+    function callback(error, csvData, europe, france){
+        //create graticule generator
+        var graticule = d3.geoGraticule()
+            .step([5, 5]); //place graticule lines every 5 degrees of longitude and latitude
+	
+	
 	//Example 1.5 line 1
     function callback(error, csvData, europe, france){
         //translate europe TopoJSON
@@ -53,5 +61,18 @@ window.onload = function(){
                 return "regions " + d.properties.adm1_code;
             })
             .attr("d", path);
+		
+        //Example 2.6 line 1...create graticule generator
+        var graticule = d3.geoGraticule()
+            .step([5, 5]); //place graticule lines every 5 degrees of longitude and latitude
+
+        //create graticule background
+        var gratBackground = map.append("path")
+            .datum(graticule.outline()) //bind graticule background
+            .attr("class", "gratBackground") //assign class for styling
+            .attr("d", path) //project graticule
+
+        //Example 2.6 line 5...create graticule lines
+        var gratLines = map.selectAll(".gratLines") //select graticule elements that will be created
     };
 };
