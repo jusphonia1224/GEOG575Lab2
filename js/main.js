@@ -32,14 +32,7 @@ window.onload = function(){
         .defer(d3.json, "data/FranceRegions.topojson") //load choropleth spatial data
         .await(callback);
 	
-	
-	//Example 2.3 line 1
-    function callback(error, csvData, europe, france){
-        //create graticule generator
-        var graticule = d3.geoGraticule()
-            .step([5, 5]); //place graticule lines every 5 degrees of longitude and latitude
-	
-	
+		
 	//Example 1.5 line 1
     function callback(error, csvData, europe, france){
         //translate europe TopoJSON
