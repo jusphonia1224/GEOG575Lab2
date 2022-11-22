@@ -63,10 +63,12 @@ function setMap(){
 		.attr("d", path); //project graticule lines
 
 	queue() //use queue.js to parallelize asynchronous data loading for cpu efficiency
-		.defer(d3.csv, "http://jusphonia.ddns.net/GEOG575/vaccination_data.csv") //load attributes data from csv
+		//.defer(d3.csv, "http://jusphonia.ddns.net/GEOG575/vaccination_data.csv") //load attributes data from csv
+		.defer(d3.csv, "data/vaccination_data.csv") //load attributes data from csv
 		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/EuropeCountries.topojson") //load geometry from countries topojson
 		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/FranceRegions.topojson") //load geometry from regions topojson
-		.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/ne_110m_admin_0_countries.topojson") //load geometry 
+		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/ne_110m_admin_0_countries.topojson") //load geometry 
+		.defer(d3.json, "data/ne_110m_admin_0_countries.topojson") //load geometry 
 		.await(callback);
 
 	function callback(error, csvData, countriesData){
