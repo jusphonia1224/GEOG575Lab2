@@ -1,24 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<meta name="keywords" content="maps, cartography, gis, GISoul"/>
-		<title>GISoul - Jusphonia Ho</title>
-		
-		<link href="css/style.css" rel="stylesheet">
-				
-		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">	
-		
-	</head>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>GISoul - Jusphonia Ho (GEOG575 Lab 2)</title>
+        
+        <!--main stylesheet-->
+		<link rel="stylesheet" href="css/style.css" />
+    </head>
+    
+    <body>        
+        <!--libraries-->
+		<script src="lib/d3.v3.js"></script>
+        <script src="lib/topojson.v1.min.js"></script>
+        <script src="lib/queue.js"></script>
 
-	<body>
+    	<!--link to main javascript file-->
+		<script src="js/main.js"></script>
 		
-		<!--external script-->
-		<script src="js/main.js"></script>	
-		<script src="js/d3.v7.min.js"></script>
-		<script src="js/d3-queue.v3.min.js"></script>
-		<script src="js/topojson.js"></script>
-	</body>
+		<h2> GEOG575 - Lab 2 (Jusphonia Ho) </h2>
+		
+		<h5> This map is showing the vaccination data retrieved from WHO, which describe the situation of how citizens are equipped with vaccinations. 
+		<br><br>
+		To have a better comparison for the data, the data which are in terms of 100,000 persons are used in this map.
+		<br><br>
+		The map are with 5 categories selected:
+		<br>
+		1. TOTAL_VACCINATIONS_PER100: This value showing the number of citizens who are vaccinated with at least 1 dose, in terms of 100,000 persons.
+		<br>
+		2. PERSONS_VACCINATED_1PLUS_DOSE_PER100: This value showing the number of citizens who are vaccinated with more than 1 dose, in terms of 100,000 persons.
+		<br>
+		3. PERSONS_FULLY_VACCINATED_PER100: This value showing the number of citizens who are fully vaccinated, in terms of 100,000 persons.
+		<br>
+		4. NUMBER_VACCINES_TYPES_USED: This value showing how many types of vaccinations are allowed to be used in this country.
+		<br>
+		5. PERSONS_BOOSTER_ADD_DOSE_PER100: This value showing the number of citizens who are vaccinated with the booster dose, in terms of 100,000 persons.
+		<br><br></h5>
+    </body>
 </html>
