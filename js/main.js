@@ -67,7 +67,6 @@ function setMap(){
 		.defer(d3.csv, "data/vaccination_data.csv") //load attributes data from csv
 		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/EuropeCountries.topojson") //load geometry from countries topojson
 		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/FranceRegions.topojson") //load geometry from regions topojson
-		//.defer(d3.json, "http://jusphonia.ddns.net/GEOG575/ne_110m_admin_0_countries.topojson") //load geometry 
 		.defer(d3.json, "data/ne_110m_admin_0_countries.topojson") //load geometry 
 		.await(callback);
 
@@ -291,7 +290,7 @@ function dehighlight(data){
 function moveLabel() {
 	
 	var x = d3.event.clientX+10; //horizontal label coordinate based mouse position stored in d3.event
-	var y = d3.event.clientY-75; //vertical label coordinate
+	var y = d3.event.clientY-500; //vertical label coordinate
 	d3.select(".infolabel") //select the label div for moving
 		.style("margin-left", x+"px") //reposition label horizontal
 		.style("margin-top", y+"px"); //reposition label vertical
