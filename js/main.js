@@ -1,7 +1,5 @@
 /********************************************************
-Written for Cartographic Perspectives: On the Horizon
-Modified from an Interactive Cartography and Geovisualization laboratory exercise given in Spring, 2013
-Copyright (c) October 2013, Carl Sack and the University of Wisconsin-Madison Cartography Program
+Modified from the examples of Cartographic Perspectives: On the Horizon with Copyright (c) October 2013, Carl Sack and the University of Wisconsin-Madison Cartography Program
 MIT License
 **********************************************************/
 
@@ -9,15 +7,16 @@ MIT License
 var keyArray = ["TOTAL_VACCINATIONS_PER100","PERSONS_VACCINATED_1PLUS_DOSE_PER100","PERSONS_FULLY_VACCINATED_PER100","PERSONS_BOOSTER_ADD_DOSE_PER100","NUMBER_VACCINES_TYPES_USED"];
 var expressed = keyArray[0];
 
+//start script once HTML is loaded
+window.onload = initialize();
 
-
-window.onload = initialize(); //start script once HTML is loaded
-
-function initialize(){ //the first function called once the html is loaded
+//the first function called once the html is loaded
+function initialize(){
 	setMap();
 };
 
-function setMap(){ //set choropleth map parameters	
+//set choropleth map parameters	
+function setMap(){
 	//map frame dimensions
 	var width = 800;
 	var height = 600;
@@ -25,7 +24,7 @@ function setMap(){ //set choropleth map parameters
 	//optional--create a title for the page
 	// var title = d3.select("body")
 	// 	.append("h1")
-	// 	.text("France Regions Choropleth");
+	// 	.text("GEOG575 - Lab 2 (Jusphonia Ho)");
 	
 	//create a new svg element with the above dimensions
 	var map = d3.select("body")
@@ -34,7 +33,7 @@ function setMap(){ //set choropleth map parameters
 		.attr("height", height)
 		.attr("class", "map");
 	
-	//create Europe albers equal area conic projection, centered on France
+	//create mercator projection
 	var projection = d3.geo.mercator()
 		.center([0, 40])
 		//.rotate([-10, 0])
@@ -109,7 +108,7 @@ function setMap(){ //set choropleth map parameters
 
 		//add regions to map as enumeration units colored by data
 		var regions = map.selectAll(".regions")
-			.data(topojson.feature(countriesData, countriesData.objects.ne_110m_admin_0_countries).features) //bind regions data to path element
+			.data(topojson.feature(countriesData, countriesData.objects.ne_110m_admin_0_countries).features)
 			.enter() //create elements
 			.append("path") //append elements to svg
 			.attr("class", "regions") //assign class for additional styling
@@ -327,7 +326,7 @@ function setChart(csvData, colorScale){
     var chartWidth = 1500,
         chartHeight = 800;
 		
-	//Example 2.1 line 17...create a second svg element to hold the bar chart
+	//create a second svg element to hold the bar chart
     var chart = d3.select("body")
         .append("svg")
         .attr("width", chartWidth)
@@ -339,7 +338,7 @@ function setChart(csvData, colorScale){
         .range([0, chartHeight])
         .domain([0, 105]);
 
-    //Example 2.4 line 8...set bars for each province
+    //set bars for each province
     var bars = chart.selectAll(".bars")
         .data(csvData)
         .enter()
@@ -364,7 +363,7 @@ function setChart(csvData, colorScale){
             return choropleth(d, colorScale);
         });
 		
-	    //annotate bars with attribute value text
+	//annotate bars with attribute value text
     var numbers = chart.selectAll(".numbers")
         .data(csvData)
         .enter()
@@ -387,7 +386,7 @@ function setChart(csvData, colorScale){
             return d[expressed];
         });
 	
-	    //below Example 2.8...create a text element for the chart title
+	//create a text element for the chart title
     var chartTitle = chart.append("text")
         .attr("x", 20)
         .attr("y", 40)
